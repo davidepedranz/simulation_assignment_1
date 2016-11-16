@@ -1,0 +1,35 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+\begin{table}
+	\centering
+	\caption{Summary of the estimated parameters}
+	\label{tab:summary}
+	\begin{tabular}{l>{\raggedright}p{3cm}c}
+    	\toprule
+    		\multicolumn{2}{l}{parameter} & \multicolumn{1}{c}{value} \\
+    	\midrule
+    		$\mu$    & mean of the logistic $Y$  & 3.00              \\
+    		$f$      & frequency of the sinusoid & \SI{200}{\hertz}  \\
+    		$A$      & amplitude of the sinusoid & 1.27              \\
+    		$s$      & scale of the logistic     & 0.49              \\
+    		$\sigma$ & s.d. of the Gaussian      & 0.96              \\
+    	\bottomrule
+	\end{tabular}
+\end{table}
+
+
+In this work, we solved the problem of estimating the parameters of a given model using a sample of measures.
+This type of analysis should be used for every measure that requires some reliability, since every probe is subject to somer random noise.
+
+The estimated values for each parameter are summarized in \cref{tab:summary}.
+The confidence intervals defined in \cref{eq:confidence} are reported below for completeness:
+\begin{align*}
+    P[2.94 < \mu < 3.06] &= 0.95 \\
+    P[2.92 < \mu < 3.08] &= 0.99
+\end{align*}
+
+First, we estimated the value for the mean parameters, which was not affected by the others.
+Secondly, we used the auto correlation function to isolate and remove the sinusoidal noise.
+Thirdly, we exploited the different shapes and moments of the Gaussian and the logistic distribution to separate them from each other.
+Finally, we computed a confidence interval for the mean using the technique of the batch means.

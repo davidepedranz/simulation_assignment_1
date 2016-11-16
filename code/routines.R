@@ -3,7 +3,7 @@ library('e1071')
 
 ComputeAutocorrelation <- function(dataset) {
   # Computes the autocorrelation function for a given dataset.
-  # We condider only half of the result with a lag ranging
+  # We condider 3/4 of the result with a lag ranging
   # from 1 to the whole dataset.
   # This function uses the native R autocorrelation function,
   # but apply a correction to denormalize it.
@@ -21,8 +21,8 @@ ComputeAutocorrelation <- function(dataset) {
   autocorrelation <- acf(dataset, lag.max=n, type="covariance", plot = FALSE)
   
   # apply the correction
-  # take the first 80% of the result
-  last.value <- floor(n * 0.5)
+  # take the first 75% of the result
+  last.value <- floor(n * 0.75)
   return((autocorrelation$acf[2:(n+1)] / n:1 * n)[1:last.value])
 }
 
@@ -258,7 +258,9 @@ SolveAssignment1 <- function(sampling.time, sampling.frequency, dataset.raw) {
     s=estimated.s,
     sigma=estimated.sigma,
     confidence.95=raw.confidence.95,
-    confidence.99=raw.confidence.99
+    confidence.99=raw.confidence.99,
+    confidence2.95=cleaned.confidence.95,
+    confidence2.99=cleaned.confidence.99
   ))
 }
 

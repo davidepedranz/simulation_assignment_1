@@ -1,0 +1,26 @@
+\section{First parameter - Mean $\mu$}
+\label{sec:mean}
+
+We start from the estimation of the mean $\mu$ of the logistic distribution $Y$.
+We observe that:
+\begin{itemize}
+    \item the Gaussian $Z$ has zero mean, thus $E[Z] = 0$;
+    \item the data set contains an integer number of periods of the sinusoid, which implies that its mean over the entire data set is zero $E[Asin(2 \pi f t)] = 0$.
+\end{itemize}
+
+Thus, we can build an unbiased estimator $\hat{\mu}$ by taking the average on the whole data set:
+
+\begin{equation}
+    \hat{\mu} = \frac{1}{n}\sum_{t=1}^{n}x_t = 3.00
+    \label{eq:mean}
+\end{equation}
+
+It is easy to prove that $\hat{\mu}$ in \cref{eq:mean} is unbiased:
+
+\begin{equation*}
+    \begin{split}
+        E[\hat{\mu}] &= E \Big[ \frac{1}{n}\sum_{t=1}^{n} \big( A sin(2 \pi f t) + Y + Z \big) \Big] \\
+                     &= \frac{1}{n} \sum_{t=1}^{n} E[A sin(2 \pi f t)] + \frac{1}{n} n E[Y] + \frac{1}{n} n E[Z] \\
+                     &= 0 + \mu + 0 = \mu.
+    \end{split}
+\end{equation*}

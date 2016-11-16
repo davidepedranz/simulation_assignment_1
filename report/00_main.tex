@@ -1,0 +1,72 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{silence}\WarningsOff[latexfont]
+
+\usepackage{amsmath}
+
+\RequirePackage{tikz}[2010/10/13]
+\usetikzlibrary{arrows,automata,calc,intersections,patterns,decorations.pathmorphing,decorations.pathreplacing}
+
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage[binary-units,per-mode=symbol]{siunitx}
+\sisetup{list-final-separator = {, and }}
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{microtype}
+\usepackage{textcomp}
+\usepackage[american]{babel}
+\usepackage[noabbrev,capitalise]{cleveref}
+\usepackage{xspace}
+\usepackage{hyphenat}
+\usepackage[draft,inline,nomargin,index]{fixme}
+\fxsetup{theme=color}
+\usepackage{grffile}
+\usepackage{xfrac}
+\usepackage{multirow}
+\RequirePackage{xstring}
+\RequirePackage{xparse}
+\RequirePackage[index=true]{acro}
+
+\NewDocumentCommand\acrodef{mO{#1}mG{}}{\DeclareAcronym{#1}{short={#2}, long={#3}, #4}}
+\NewDocumentCommand\acused{m}{\acuse{#1}}
+
+\usepackage{upquote}
+
+\acrodef{i.i.d.}{independent identically distributed}
+\DeclareMathOperator*{\argmax}{arg\!\max}
+
+\begin{document}
+
+\title{Characterization of a population parameters}
+\author{
+	\IEEEauthorblockN{Davide Pedranz, Mat. number 189295}
+	\texttt{davide.pedranz@studenti.unitn.it}
+}
+
+\maketitle
+
+\begin{abstract}
+An electronic probe measures the output of a circuit which is known to generate independent identically distributed samples taken from a logistic distribution.
+The probe is affected by a Gaussian white noise and a sinusoidal bias.
+Given the measures data set, we want to estimate the mean and its confidence interval in order to decide whether to keep or discard the circuit.
+\end{abstract}
+
+\acresetall
+
+\input{01_introduction}
+\input{02_mean}
+\input{03_frequency}
+\input{04_amplitude}
+\input{05_variances}
+\input{06_confidence}
+\input{07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

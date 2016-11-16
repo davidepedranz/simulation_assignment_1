@@ -1,0 +1,30 @@
+\section{Introduction}
+\label{sec:introduction}
+Circuitry are widely used in every electronic device.
+In order for those devices to work properly, high quality circuitry is needed.
+The quality of a circuitry can be evaluated measuring some of its properties.
+Unfortunately, each measurement is subject to some random noise or bias.
+In order to achieve reliable results, the stochastic nature of the measuring process must be taken into account.
+
+In this case, we have a circuitry which is known to generate \ac{i.i.d.} samples taken from a population with a logistic distribution.
+The electronic probe used for the measures is known to introduce a white Gaussian noise and a sinusoidal bias.
+The actual measures can thus be described as:
+
+\begin{equation}
+    \begin{gathered}
+        x_{t} = A sin(2 \pi f t) + Y + Z, \\
+        Y \sim Logis(\mu, s), \; Z \sim N(0, \sigma_{z}).
+    \end{gathered}
+    \label{eq:original-sample}
+\end{equation}
+
+Our aim is to estimate the five parameters of the model given the measures data set.
+In particular, we are interested in the mean $\mu$ of the logistic distribution $Y$.
+In addition, a confidence interval for the $\hat{\mu}$ is required.
+
+The given data set contains $N = \num{60000}$ points from a sampling done at $ F = \SI{20}{\kilo\hertz}$ for \SI{3}{\second}.
+We assume the frequency $f$ of the sinusoid to be an integer divisor of the sampling frequency and to be low, in the order of ten/hundreds of \SI{}{\hertz}.
+
+We will estimate one parameter at a time, use it to clean the samples, then focus on the next one until the last one.
+In particular, we will start from $\mu$, then estimate $f$ and $A$, and finally $s$ and $\sigma$.
+As the last step, we will estimate the confidence interval for $\hat{\mu}$.

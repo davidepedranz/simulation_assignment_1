@@ -1,0 +1,26 @@
+\section{Mean Confidence Interval}
+\label{sec:confidence}
+
+The data set contains a sinusoidal noise, which makes the samples sample not identically distributed.
+In order to compute a small confidence interval with a high probability, we need to transform the data set to obtain \ac{i.i.d.} samples.
+The used technique is the batch means.
+
+We observe that the mean operator is linear. This allows to compute the mean of the original data set by dividing the samples in batches of some fixed size, computing the mean of each batch and finally the mean of the means.
+
+If we take the size of the batch as a multiple of the wavelength of the sinusoid and compute the batches, we obtain a population of random variables \ac{i.i.d.}, since the sum of any sinusoidal signal over a single period is zero.
+Since the size is still high (\num{300} elements), we can treat the new population as normally distributed.
+We computed two confidence intervals for a confidence of \num{95}\% and \num{99}\%:
+
+\begin{equation}
+    \begin{split}
+        P[2.94 < \mu < 3.06] &= 0.95 \\
+        P[2.92 < \mu < 3.08] &= 0.99    
+    \end{split}
+    \label{eq:confidence}
+\end{equation}
+
+A second possibility is to consider the data set without the sinusoidal noise.
+Removing the sinusoidal signal is subject to some noise which increases the variance of the new data set.
+On the other, we can directly treat the population as normally distributed and use the confidence intervals for a Gaussian population.
+The result of the computation gives practically the same numbers as the batch means technique (the difference is less \num{e-10}).
+The high number of samples probably compensate the extra noise introduces by the sinusoid's removal.

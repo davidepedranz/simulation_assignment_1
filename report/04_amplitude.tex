@@ -1,0 +1,22 @@
+\section{Third Parameter - Amplitude $A$}
+\label{sec:amplitude}
+
+The amplitude $A$ of the sinusoid can be computed in a similar way.
+\cref{eq:autocorrelation} describe the relationship between the original sine signal and its autocorrelation function.
+To estimate the amplitude of the autocorrelation function $A_{cos}$, we take the average of the absolute value of the theoretical highest and lowest points of each period of the cosine.
+Formally:
+
+\begin{equation}
+    \begin{gathered}
+        n = \Big\lfloor \frac{2 \cdot lag}{N} \Big\rfloor, \\
+        A_{cos} = \frac{1}{n} \sum_{\tau=1}^{n} |R(\tau + lag)| + |R(\tau + 2 \cdot lag)| = 0.81
+    \end{gathered}
+\end{equation}
+
+As for the case of the frequency, we take the mean over all peaks to reduce the noise due to the variances of $Y$ and $Z$.
+
+Then, we can easily derive the estimation of the original amplitude $A$:
+
+\begin{equation*}
+    \hat{A} = \sqrt{2 \cdot A_{cos}} = 1.27.
+\end{equation*}

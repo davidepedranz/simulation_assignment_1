@@ -1,0 +1,60 @@
+\section{Last Parameters - $s$ and $\sigma_n$}
+\label{sec:variances}
+
+We remove the sinusoid from the data set by subtracting the theoretical sine function with frequency equal to the estimated frequency $f$ and amplitude equal to the estimated amplitude $A$.
+Now the samples can be described as:
+
+\begin{equation*}
+    \begin{gathered}
+        X = Y + Z, \\
+        Y \sim Logis(0, s), \; Z \sim N(0, \sigma_{z}).
+    \end{gathered}
+\end{equation*}
+
+To estimate the remaining parameters $s$ and $\sigma$, we can analyze the moments of $X = Y + Z$.
+
+Both $Y$ and $Z$ have zero mean, so the first moment does not provide any useful information about the single distributions.
+
+Since $Y$ and $Z$ are independent, the variance of the sum is equal to the sum of the variances, formally:
+
+\begin{equation}
+    \operatorname{Var}[Y+Z] = \operatorname{Var}[Y] + \operatorname{Var}[Z]
+    \label{eq:variances}
+\end{equation}
+
+Both a logistic and a Gaussian distribution are symmetric with respect to the origin, so the skewness of $X$, $Y$ and $Z$ is zero.
+
+The excess kurtosis of a Logistic distribution is always \num{1.2}, while the Gaussian distribution one is always \num{0}:
+
+\begin{equation*}
+    \operatorname{Kurt}[Y] - 3 = 1.2,\; \operatorname{Kurt}[Z] - 3 = 0.
+\end{equation*}
+
+We also know that the excess kurtosis of the sum of independent random variables for which the fourth moment exists has the following property, according to \cite{wiki:kurtosis}:
+
+\begin{equation*}
+    \operatorname{Kurt}[Y+Z] - 3 = \frac{\sigma_y^{\,4} (\operatorname{Kurt}[Y] - 3) + \sigma_z^{\,4} (\operatorname{Kurt}[Z] - 3)}{(\sigma_y^{\,2} + \sigma_z^{\,2})^2},
+\end{equation*}
+
+where $\sigma_y$ and $\sigma_z$ denote respectively the standard deviation of $Y$ and $Z$. We can thus compute the excess kurtosis of $X$:
+
+\begin{equation}
+    \operatorname{Kurt}[X] - 3 = \frac{1.2 \cdot \sigma_{y}^{\,4}}{(\sigma_{y}^{\,2} + \sigma_{z}^{\,2})^2}.
+    \label{eq:kurtosis}
+\end{equation}
+
+From \cref{eq:variances} and \cref{eq:kurtosis} we obtain a system of two equations in two variables.
+$\operatorname{Var}[X]$ and $\operatorname{Kurt}[X] - 3$ are computed on the data set using the standard well known estimators.
+The system has two solutions, but we are interested only in the positive one.
+
+\begin{equation*}
+    \begin{cases}
+        \hat{\sigma}_y^{\,2} = \sqrt{\frac{(\operatorname{Kurt}[X] - 3) \cdot \operatorname{Var}[X]^2}{1.2}} \\
+        \hat{\sigma}_z^{\,2} = \operatorname{Var}[X] - \hat{\sigma}_y^{\,2}
+    \end{cases}
+\end{equation*}
+
+The estimate of $s$ and $\sigma_z$ becomes now trivial:
+\begin{equation*}
+    \hat{s} = \frac{\hat{\sigma}_y}{\pi} \sqrt{3} = 4.49, \;\; \hat{\sigma}_z = 0.97.
+\end{equation*}
