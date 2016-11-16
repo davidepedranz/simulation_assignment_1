@@ -7,7 +7,7 @@ PlotAutocorrelation <- function(autocorrelation) {
   data.h <- max(data.max, abs(data.min))
   
   # output file
-  pdf('../figures/autocorrelation.pdf', width=16, height=9)
+  pdf('./autocorrelation.pdf', width=16, height=9)
   
   # margins
   par(mar=c(7, 7, 1, 1))

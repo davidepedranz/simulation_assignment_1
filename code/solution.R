@@ -6,7 +6,7 @@ sampling.time <- 3           # s
 sampling.frequency <- 20000  # Hz
 
 # load the data
-dataset <- read.csv('pedranz.csv')$x
+dataset <- read.csv('./pedranz.csv')$x
 
 # solve the assignment
 solution <- SolveAssignment1(sampling.time, sampling.frequency, dataset)
