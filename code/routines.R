@@ -238,15 +238,8 @@ SolveAssignment1 <- function(sampling.time, sampling.frequency, dataset.raw) {
   raw.confidence.99 <- MeanConfidenceIntervalBatchMeans(dataset.raw, batch.size, 0.99)
   
   # working on the data without the sinusoide
-  # NB: it makes no difference for the computation to
-  #     remove or not the estimated mean
-  # NB: we test also batches of 1 unit,
-  #     which means treating the original population as Gaussian
-  cleaned.confidences.95 <- sapply(1:200, function(size) MeanConfidenceIntervalBatchMeans(dataset.nosinusoide, size, 0.95))
-  cleaned.confidence.95 <- min(cleaned.confidences.95)
-  cleaned.confidences.99 <- sapply(1:200, function(size) MeanConfidenceIntervalBatchMeans(dataset.nosinusoide, size, 0.99))
-  cleaned.confidence.99 <- min(cleaned.confidences.99)
-  
+  # we can work on the cleaned data, but we need to 
+  # treat them as non gaussian == batch means again
   
   #####################################
   # results
@@ -258,9 +251,7 @@ SolveAssignment1 <- function(sampling.time, sampling.frequency, dataset.raw) {
     s=estimated.s,
     sigma=estimated.sigma,
     confidence.95=raw.confidence.95,
-    confidence.99=raw.confidence.99,
-    confidence2.95=cleaned.confidence.95,
-    confidence2.99=cleaned.confidence.99
+    confidence.99=raw.confidence.99
   ))
 }
 
