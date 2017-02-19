@@ -7,4 +7,4 @@ There are 3 files:
  * **plots.R** : contains the function used to generate the plot in the report
  * **draw_plot.R** : loads the data and generate the plot
 
-NB: the R script requires the package *e1071* to compute the exstimated excess kurtosis of the dataset.
+NB: the R script requires the package *e1071* to compute the estimated excess kurtosis of the dataset.
